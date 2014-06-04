@@ -22,7 +22,7 @@ session_start();
 // init app with app id and secret
 FacebookSession::setDefaultApplication('746787215356096','4a660b9fa8686836cbf9933b943f6ad9');
 
-$helper = new FacebookRedirectLoginHelper('http://heyjimmy.net/whatsbuzzing/index.php');
+$helper = new FacebookRedirectLoginHelper('http://heyjimmy.net:1985/whatsbuzzing/index.php');
 
 $loginUrl = $helper->getLoginUrl(array("scope"=>"read_stream"));
 ?>

@@ -22,7 +22,7 @@ session_start();
 
 FacebookSession::setDefaultApplication('746787215356096','4a660b9fa8686836cbf9933b943f6ad9');
 
-$helper = new FacebookRedirectLoginHelper('http://heyjimmy.net/whatsbuzzing/index.php');
+$helper = new FacebookRedirectLoginHelper('http://heyjimmy.net:1985/whatsbuzzing/index.php');
 try {
 	$session = $helper->getSessionFromRedirect();
 } catch(FacebookRequestException $ex) {
@@ -121,5 +121,5 @@ else {
 	exit();
 	}
 
-	Redirect('http://heyjimmy.net/whatsbuzzing/login.php', false);
+	Redirect('http://heyjimmy.net:1985/whatsbuzzing/login.php', false);
 }
