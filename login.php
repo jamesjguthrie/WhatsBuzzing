@@ -33,7 +33,7 @@ $loginUrl = $helper->getLoginUrl(array("scope"=>"read_stream"));
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>WhatsBuzzing</title>
+    <title>WhatsBuzzing - Login</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -57,18 +57,18 @@ $loginUrl = $helper->getLoginUrl(array("scope"=>"read_stream"));
             <div class="inner">
               <h3 class="masthead-brand">WhatsBuzzing</h3>
               <ul class="nav masthead-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Features</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="http://heyjimmy.net">HeyJimmy Homepage</a></li>
+                <li><a href="http://twitter.com/HeyJimmyUK">Twitter</a></li>
+                <li><a href="mailto:james@heyjimmy.net">E-mail</a></li>
               </ul>
             </div>
           </div>
 
           <div class="inner cover">
             <h1 class="cover-heading">WhatsBuzzing</h1>
-            <p class="lead">Your own tailored trending list. Click below to login to Facebook.</p>
+            <p class="lead">Your own tailored trending list. Click below to login to WhatsBuzzing with Facebook.</p>
             <p class="lead">
-              <?php echo '<a href="'.$loginUrl.'"><button class="btn btn-lg btn-default">Login</button></a>'; ?>
+              <?php echo '<a href="'.$loginUrl.'"><button class="btn btn-lg btn-primary">Login</button></a>'; ?>
             </p>
           </div>
 
