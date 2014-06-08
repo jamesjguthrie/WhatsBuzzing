@@ -1,6 +1,6 @@
 <?php
 
-require '../vendor/autoload.php';
+require 'vendor/autoload.php';
  
 use Facebook\FacebookHttpable;
 use Facebook\FacebookCurl;
@@ -22,7 +22,7 @@ session_start();
 
 FacebookSession::setDefaultApplication('746787215356096','4a660b9fa8686836cbf9933b943f6ad9');
 
-$helper = new FacebookRedirectLoginHelper('http://heyjimmy.net:1985/whatsbuzzing/index.php');
+$helper = new FacebookRedirectLoginHelper('http://heyjimmy.net:1985/index.php');
 try {
 	$session = $helper->getSessionFromRedirect();
 } catch(FacebookRequestException $ex) {
@@ -48,7 +48,7 @@ if ($session) {
 		foreach ($newsfeedobjects as $key => $stories) {	  
 			$newsstories[] = $stories->message;
 			$id = explode("_", $stories->id);
-			$newsstoriesID[] = "http://www.facebook.com/".$id[0]."_".$id[1];
+			$newsstoriesID[] = "http://www.facebook.com/".$id[0]."/posts/".$id[1];
 		}
 		foreach ($newsfeedobjects as $key => $commentsarray) {
 			$originalcommentID = $commentsarray->id;
@@ -56,8 +56,8 @@ if ($session) {
 				foreach ($commentdata as $key => $commentsmessagearray) {
 					foreach ($commentsmessagearray as $key => $commentmessage) {
 						$newsstories[] = $commentmessage->message;
-						//$originalcommentID = str_replace("_", "_",$originalcommentID); //works for page not friend
-						$newsstoriesID[] = "https://www.facebook.com/".$originalcommentID."?comment_id=".explode("_",$commentmessage->id)[1];
+						$originalcommentID = str_replace("_", "/posts/",$originalcommentID); //works for page not friend
+						$newsstoriesID[] = "http://www.facebook.com/".$originalcommentID."?comment_id=".explode("_",$commentmessage->id)[1];
 					}
 				}
 			}
@@ -124,7 +124,7 @@ if ($session) {
 
           <div class="masthead clearfix">
             <div class="inner">
-              <h3 class="masthead-brand">WhatsBuzzing</h3>
+              <h3 class="masthead-brand"><img height="30px" src="images/WhatsBuzzingWhiteTextLogo.png"></img></h3>
               <ul class="nav masthead-nav">
                 <li><a href="http://heyjimmy.net">HeyJimmy Homepage</a></li>
                 <li><a href="http://twitter.com/HeyJimmyUK">Twitter</a></li>
@@ -181,5 +181,5 @@ else {
 	exit();
 	}
 
-	Redirect('http://heyjimmy.net:1985/whatsbuzzing/login.php', false);
+	Redirect('http://heyjimmy.net:1985/login.php', false);
 }

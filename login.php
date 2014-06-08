@@ -1,6 +1,6 @@
 <?php
 
-require '../vendor/autoload.php';
+require 'vendor/autoload.php';
  
 use Facebook\FacebookHttpable;
 use Facebook\FacebookCurl;
@@ -22,7 +22,7 @@ session_start();
 // init app with app id and secret
 FacebookSession::setDefaultApplication('746787215356096','4a660b9fa8686836cbf9933b943f6ad9');
 
-$helper = new FacebookRedirectLoginHelper('http://heyjimmy.net:1985/whatsbuzzing/index.php');
+$helper = new FacebookRedirectLoginHelper('http://heyjimmy.net:1985/index.php');
 
 $loginUrl = $helper->getLoginUrl(array("scope"=>"read_stream"));
 ?>
@@ -55,7 +55,7 @@ $loginUrl = $helper->getLoginUrl(array("scope"=>"read_stream"));
 
           <div class="masthead clearfix">
             <div class="inner">
-              <h3 class="masthead-brand">WhatsBuzzing</h3>
+              <h3 class="masthead-brand"></h3>
               <ul class="nav masthead-nav">
                 <li><a href="http://heyjimmy.net">HeyJimmy Homepage</a></li>
                 <li><a href="http://twitter.com/HeyJimmyUK">Twitter</a></li>
@@ -65,8 +65,8 @@ $loginUrl = $helper->getLoginUrl(array("scope"=>"read_stream"));
           </div>
 
           <div class="inner cover">
-            <h1 class="cover-heading">WhatsBuzzing</h1>
-            <p class="lead">Your own tailored trending list. Click below to login to WhatsBuzzing with Facebook.</p>
+            <h1 class="cover-heading"><img height="72px" src="images/WhatsBuzzingWhiteTextLogo.png"</img></h1>
+            <p class="lead"><i>Your</i> trending list. Click below to see what's buzzing today.</p>
             <p class="lead">
               <?php echo '<a href="'.$loginUrl.'"><button class="btn btn-lg btn-primary">Login</button></a>'; ?>
             </p>

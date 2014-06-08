@@ -1,6 +1,6 @@
 <?php
 
-require '../vendor/autoload.php';
+require 'vendor/autoload.php';
  
 use Facebook\FacebookHttpable;
 use Facebook\FacebookCurl;
@@ -68,7 +68,7 @@ echo '<!DOCTYPE html>
 
           <div class="masthead clearfix">
             <div class="inner">
-              <h3 class="masthead-brand">WhatsBuzzing</h3>
+              <h3 class="masthead-brand"><img height="30px" src="images/WhatsBuzzingWhiteTextLogo.png"></img></h3>
               <ul class="nav masthead-nav">
                 <li><a href="http://heyjimmy.net">HeyJimmy Homepage</a></li>
                 <li><a href="http://twitter.com/HeyJimmyUK">Twitter</a></li>
@@ -82,23 +82,42 @@ echo '<!DOCTYPE html>
 <p class="lead"></p>
             
 <table class="table table-responsive"><tbody><tr>';
+
+
+
+function check_second_url($url) {
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_HEADER, 1);
+		curl_setopt($ch ,CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+		curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31');
+		$data = curl_exec($ch);
+		$headers = curl_getinfo($ch);
+		//$whaturl = $headers['url'];
+		curl_close($ch);
+		return $headers['http_code'];
+	}
 $count = 0;
 
 	foreach ($newsstories as $url=>$id) {
 	if (strpos(strtolower($id),$comments) !== false) { 
-		$check_url_status = check_url($newsstoriesID[$url]);
-			if ($check_url_status == '301') {
-   				echo '<tr><td><a href="'.$newsstoriesID[$url].'"</a><h2>'.$id.'</h2></td></tr>';
-				//echo $check_url_status;
-				//print_r($whaturl);
+		$check_url_status = check_second_url($newsstoriesID[$url]);
+			if ($check_url_status == '200') {
+   				echo '<tr><td>'.$check_url_status.'</td><td> <a href="'.$newsstoriesID[$url].'"</a><h2>'.$id.'</h2></td></tr>';
 			}
-			//else {
-			//	$newsstoriesID[$url] = str_replace("_","/posts/",$newsstoriesID[$url]);
-			//	echo '<center>Not 200<a href="'.$newsstoriesID[$url].'"</a>'.$id.'</center><br />';
-			//	echo $check_url_status;
-			//}
+			else {	
+				//$check_second_url_status = check_second_url($newsstoriesID[$url]);
+				//if ($check_second_url_status == "404") {
+					$newurl = str_replace("/posts/", "_",$newsstoriesID[$url]);
+					echo '<center>'.$check_url_status.' <a href="'.$newurl.'"</a>'.$id.'</center><br />';
+				//}
+				//else echo '<tr><td>'.$check_second_url_status.'</td><td> <a href="'.$newsstoriesID[$url].'"</a><h2>'.$id.'</h2></td></tr>';
+			}
 		}
 	}
+	
 
 echo '</tbody></table></p>
 
