@@ -23,7 +23,8 @@ session_start();
 FacebookSession::setDefaultApplication('746787215356096','4a660b9fa8686836cbf9933b943f6ad9');
 
 $newsstories = $_SESSION['newsstories'];
-$newsstoriesID = $_SESSION['newsstoriesID'];
+$newsstoriesURL = $_SESSION['newsstoriesURL'];
+$namearray = $_SESSION['namearray'];
 $comments = $_GET['comments'];
 
 function check_url($url) {
@@ -46,7 +47,7 @@ echo '<!DOCTYPE html>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>WhatsBuzzing - Login</title>
+    <title>WhatsBuzzing - What\'s everyone saying?</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -68,7 +69,7 @@ echo '<!DOCTYPE html>
 
           <div class="masthead clearfix">
             <div class="inner">
-              <h3 class="masthead-brand"><img height="30px" src="images/WhatsBuzzingWhiteTextLogo.png"></img></h3>
+              <h3 class="masthead-brand">'.$comments.'</h3>
               <ul class="nav masthead-nav">
                 <li><a href="http://heyjimmy.net">HeyJimmy Homepage</a></li>
                 <li><a href="http://twitter.com/HeyJimmyUK">Twitter</a></li>
@@ -102,18 +103,18 @@ function check_second_url($url) {
 $count = 0;
 
 	foreach ($newsstories as $url=>$id) {
-	if (strpos(strtolower($id),$comments) !== false) { 
-		$check_url_status = check_second_url($newsstoriesID[$url]);
+	if (strpos(strtolower($id),$comments) !== false) {
+		$check_url_status = check_second_url($newsstoriesURL[$url]);
 			if ($check_url_status == '200') {
-   				echo '<tr><td>'.$check_url_status.'</td><td> <a href="'.$newsstoriesID[$url].'"</a><h2>'.$id.'</h2></td></tr>';
+   				echo '<tr><td><h4>'.$namearray[$url].'</h4></td></tr><tr><td><a href="'.$newsstoriesURL[$url].'"</a><h2>'.$id.'</h2></td></tr>';
 			}
-			else {	
+			else {
 				//$check_second_url_status = check_second_url($newsstoriesID[$url]);
 				//if ($check_second_url_status == "404") {
-					$newurl = str_replace("/posts/", "_",$newsstoriesID[$url]);
-					echo '<center>'.$check_url_status.' <a href="'.$newurl.'"</a>'.$id.'</center><br />';
-				//}
-				//else echo '<tr><td>'.$check_second_url_status.'</td><td> <a href="'.$newsstoriesID[$url].'"</a><h2>'.$id.'</h2></td></tr>';
+				$newurl = str_replace("/posts/", "_",$newsstoriesURL[$url]);
+				echo '<tr><td><h4>'.$namearray[$url].'</h4></td></tr><tr><td><a href="'.$newurl.'"</a><h2>'.$id.'</h2></td></tr>';
+			//}
+			//else echo '<tr><td>'.$check_second_url_status.'</td><td> <a href="'.$newsstoriesID[$url].'"</a><h2>'.$id.'</h2></td></tr>';
 			}
 		}
 	}
@@ -121,9 +122,10 @@ $count = 0;
 
 echo '</tbody></table></p>
 
-          <div class="mastfoot">
+          <br /> <br /> <br /><br /><div class="mastfoot">
             <div class="inner">
-              <p>&copy 2014, Hey Jimmy Ltd.</p>
+              <p><img height="30px" src="images/WhatsBuzzingWhiteTextLogo.png"></img></p>
+		<p>&copy 2014, Hey Jimmy Ltd.</p>
             </div>
           </div>
 

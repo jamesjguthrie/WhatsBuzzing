@@ -39,32 +39,43 @@ if ($session) {
   // Request for user data
 	$newsfeedrequest = (new FacebookRequest( $session, 'GET', '/me/home' ))->execute()
 		->getGraphObject()->asArray();
-  
+	$userinforequest = (new FacebookRequest( $session, 'GET', '/me?fields=name' ))->execute()->getGraphObject()->asArray();
 	//$newsstories = array();
 	//$commentsarray = array();
 	//$commentsmessagearray = array();
-	
+	$username = $userinforequest['name'];
 	foreach ($newsfeedrequest as $key => $newsfeedobjects) {
-		foreach ($newsfeedobjects as $key => $stories) {	  
-			$newsstories[] = $stories->message;
+		foreach ($newsfeedobjects as $key => $stories) {
 			$id = explode("_", $stories->id);
-			$newsstoriesID[] = "http://www.facebook.com/".$id[0]."/posts/".$id[1];
+			$namearray[] = $stories->from->name;
+			$idarray[] = $stories->from->id;
+			$newsstories[] = $stories->message;
+			$newsstoriesURL[] = "http://www.facebook.com/".$id[0]."/posts/".$id[1];
 		}
 		foreach ($newsfeedobjects as $key => $commentsarray) {
 			$originalcommentID = $commentsarray->id;
 			foreach ($commentsarray as $key => $commentdata) {
 				foreach ($commentdata as $key => $commentsmessagearray) {
 					foreach ($commentsmessagearray as $key => $commentmessage) {
+						$namearray[] = $commentmessage->from->name;
+						$idarray[] = $commentmessage->from->id;
 						$newsstories[] = $commentmessage->message;
 						$originalcommentID = str_replace("_", "/posts/",$originalcommentID); //works for page not friend
-						$newsstoriesID[] = "http://www.facebook.com/".$originalcommentID."?comment_id=".explode("_",$commentmessage->id)[1];
+						$newsstoriesURL[] = "http://www.facebook.com/".$originalcommentID."?comment_id=".explode("_",$commentmessage->id)[1];
 					}
 				}
 			}
 		}
 	}
 	$_SESSION['newsstories'] = $newsstories;
-	$_SESSION['newsstoriesID'] = $newsstoriesID;
+	$_SESSION['newsstoriesURL'] = $newsstoriesURL;
+	$_SESSION['namearray'] = $namearray;
+	$file = $username.".txt";
+	$current = file_get_contents($file);
+	foreach ($namearray as $key=>$id) {
+		if ($id != "" && $newsstories[$key] != "") $current .= $id."\n".$idarray[$key]."\n".$newsstories[$key]."\n\n";
+		file_put_contents($file, $current);
+	}
 	function checkWordValid($word) {
 		$isok = 1;
 		$csvelements = str_getcsv(file_get_contents('nonvalidwords.csv'));
@@ -102,7 +113,7 @@ if ($session) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>WhatsBuzzing - Login</title>
+    <title>WhatsBuzzing - What\'s buzzing today?</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -124,7 +135,7 @@ if ($session) {
 
           <div class="masthead clearfix">
             <div class="inner">
-              <h3 class="masthead-brand"><img height="30px" src="images/WhatsBuzzingWhiteTextLogo.png"></img></h3>
+              <h3 class="masthead-brand"><i>Your</i> trending list.</h3>
               <ul class="nav masthead-nav">
                 <li><a href="http://heyjimmy.net">HeyJimmy Homepage</a></li>
                 <li><a href="http://twitter.com/HeyJimmyUK">Twitter</a></li>
@@ -155,6 +166,7 @@ echo '</tr></tbody></table></p>
 
           <div class="mastfoot">
             <div class="inner">
+		<p><img height="30px" src="images/WhatsBuzzingWhiteTextLogo.png"></img></p>
               <p>&copy 2014, Hey Jimmy Ltd.</p>
             </div>
           </div>

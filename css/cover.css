@@ -108,6 +108,8 @@ body {
  */
 
 .cover {
+  margin-top:100px;
+  margin-bottom:100px;
   padding: 0 20px;
 }
 .cover .btn-lg {
@@ -157,5 +159,6 @@ body {
   .mastfoot,
   .cover-container {
     width: 700px;
+    background: #333;
   }
 }

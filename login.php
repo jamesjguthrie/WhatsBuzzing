@@ -74,7 +74,8 @@ $loginUrl = $helper->getLoginUrl(array("scope"=>"read_stream"));
 
           <div class="mastfoot">
             <div class="inner">
-              <p>&copy 2014, Hey Jimmy Ltd.</p>
+              <p><img height="30px" src="images/WhatsBuzzingWhiteTextLogo.png"></img></p>
+		<p>&copy 2014, Hey Jimmy Ltd.</p>
             </div>
           </div>
 
