@@ -135,7 +135,7 @@ if ($session) {
 
           <div class="masthead clearfix">
             <div class="inner">
-              <h3 class="masthead-brand"><i>Your</i> trending list. Click any topic to see what your friends are saying.</h3>
+              <h3 class="masthead-brand"><i>Your</i> trending list.</h3>
               <ul class="nav masthead-nav">
                 <li><a href="http://heyjimmy.net">HeyJimmy Homepage</a></li>
                 <li><a href="http://twitter.com/HeyJimmyUK">Twitter</a></li>
