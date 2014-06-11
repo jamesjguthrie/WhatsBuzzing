@@ -22,7 +22,7 @@ session_start();
 
 FacebookSession::setDefaultApplication('746787215356096','4a660b9fa8686836cbf9933b943f6ad9');
 
-$helper = new FacebookRedirectLoginHelper('http://heyjimmy.net:1985/index.php');
+$helper = new FacebookRedirectLoginHelper('http://heyjimmy.net/whatsbuzzing/index.php');
 try {
 	$session = $helper->getSessionFromRedirect();
 } catch(FacebookRequestException $ex) {
@@ -135,7 +135,7 @@ if ($session) {
 
           <div class="masthead clearfix">
             <div class="inner">
-              <h3 class="masthead-brand"><i>Your</i> trending list.</h3>
+              <h3 class="masthead-brand"><i>Your</i> trending list. Click any topic to see what your friends are saying.</h3>
               <ul class="nav masthead-nav">
                 <li><a href="http://heyjimmy.net">HeyJimmy Homepage</a></li>
                 <li><a href="http://twitter.com/HeyJimmyUK">Twitter</a></li>
@@ -151,7 +151,7 @@ $count = 0;
 	foreach (array_slice($topstories, 0, 40) as $word=>$instance) {
 		if ($count % 5 == 0) echo '</tr><tr>';
 		$count++;
-		echo '<td><a href="comments.php?comments='.$word.'"><h3>'.$word.'</h3></a></td>';
+		echo '<td><a href="comments.php?comments='.$word.'" target="_blank"><h3>'.$word.'</h3></a></td>';
 	}
 
 	//Got the top 40 words. Now go through the stories and pull out the ones that have each word. Have the word be a link to
@@ -193,5 +193,5 @@ else {
 	exit();
 	}
 
-	Redirect('http://heyjimmy.net:1985/login.php', false);
+	Redirect('http://heyjimmy.net/whatsbuzzing/login.php', false);
 }

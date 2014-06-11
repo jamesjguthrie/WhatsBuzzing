@@ -106,13 +106,13 @@ $count = 0;
 	if (strpos(strtolower($id),$comments) !== false) {
 		$check_url_status = check_second_url($newsstoriesURL[$url]);
 			if ($check_url_status == '200') {
-   				echo '<tr><td><h4>'.$namearray[$url].'</h4></td></tr><tr><td><a href="'.$newsstoriesURL[$url].'"</a><h2>'.$id.'</h2></td></tr>';
+   				echo '<tr><td><h4>'.$namearray[$url].'</h4></td></tr><tr><td><a href="'.$newsstoriesURL[$url].'" target="_blank"><h2>'.$id.'</h2></a></td></tr>';
 			}
 			else {
 				//$check_second_url_status = check_second_url($newsstoriesID[$url]);
 				//if ($check_second_url_status == "404") {
 				$newurl = str_replace("/posts/", "_",$newsstoriesURL[$url]);
-				echo '<tr><td><h4>'.$namearray[$url].'</h4></td></tr><tr><td><a href="'.$newurl.'"</a><h2>'.$id.'</h2></td></tr>';
+				echo '<tr><td><h4>'.$namearray[$url].'</h4></td></tr><tr><td><a href="'.$newurl.'" target="_blank"><h2>'.$id.'</h2></a></td></tr>';
 			//}
 			//else echo '<tr><td>'.$check_second_url_status.'</td><td> <a href="'.$newsstoriesID[$url].'"</a><h2>'.$id.'</h2></td></tr>';
 			}
