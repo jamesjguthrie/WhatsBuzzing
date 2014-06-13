@@ -38,12 +38,14 @@ $loginUrl = $helper->getLoginUrl(array("scope"=>"read_stream"));
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/cover.css" rel="stylesheet">
+    <link href="css/bootstrap-social.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn\'t work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.
+      <script src="https://oss.maxcdn.com/libs/respond.js/1>
     <![endif]-->
   </head>
   <body>
@@ -68,7 +70,7 @@ $loginUrl = $helper->getLoginUrl(array("scope"=>"read_stream"));
             <h1 class="cover-heading"><img height="72px" src="images/WhatsBuzzingWhiteTextLogo.png"</img></h1>
             <p class="lead"><i>Your</i> trending list. Click below to see what's buzzing today.</p>
             <p class="lead">
-              <?php echo '<a href="'.$loginUrl.'"><button class="btn btn-lg btn-primary">Login</button></a>'; ?>
+              <?php echo '<a href="'.$loginUrl.'" class="btn btn-social btn-facebook"><i class="fa fa-facebook"></i>Login with Facebook</a>'; ?>
             </p>
           </div>
 
