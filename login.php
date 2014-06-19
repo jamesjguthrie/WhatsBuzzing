@@ -1,6 +1,8 @@
 <?php
 
 require 'vendor/autoload.php';
+
+include_once("analyticstracking.php");
  
 use Facebook\FacebookHttpable;
 use Facebook\FacebookCurl;
@@ -40,6 +42,7 @@ $loginUrl = $helper->getLoginUrl(array("scope"=>"read_stream"));
     <link href="css/cover.css" rel="stylesheet">
     <link href="css/bootstrap-social.css" rel="stylesheet">
     <link href="css/font-awesome.css" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn\'t work if you view the page via file:// -->
@@ -71,7 +74,16 @@ $loginUrl = $helper->getLoginUrl(array("scope"=>"read_stream"));
             <p class="lead"><i>Your</i> trending list. Click below to see what's buzzing today.</p>
             <p class="lead">
               <?php echo '<a href="'.$loginUrl.'" class="btn btn-social btn-facebook"><i class="fa fa-facebook"></i>Login with Facebook</a>'; ?>
-            </p>
+	    </p>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- WhatsBuzzing -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-5237428979268056"
+     data-ad-slot="5184630970"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
           </div>
 
           <div class="mastfoot">

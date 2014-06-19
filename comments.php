@@ -1,6 +1,8 @@
 <?php
 
 require 'vendor/autoload.php';
+
+include_once("analyticstracking.php");
  
 use Facebook\FacebookHttpable;
 use Facebook\FacebookCurl;
@@ -52,6 +54,7 @@ echo '<!DOCTYPE html>
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/cover.css" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn\'t work if you view the page via file:// -->
@@ -81,7 +84,15 @@ echo '<!DOCTYPE html>
           <div class="inner cover">
 
 <p class="lead"></p>
-            
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- WhatsBuzzing -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-5237428979268056"
+     data-ad-slot="5184630970"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>            
 <table class="table table-responsive"><tbody><tr>';
 
 

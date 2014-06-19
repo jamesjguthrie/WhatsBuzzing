@@ -1,7 +1,9 @@
 <?php
 
 require 'vendor/autoload.php';
- 
+
+include_once("analyticstracking.php");
+	
 use Facebook\FacebookHttpable;
 use Facebook\FacebookCurl;
 use Facebook\FacebookCurlHttpClient;
@@ -118,7 +120,7 @@ if ($session) {
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/cover.css" rel="stylesheet">
-
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn\'t work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -140,13 +142,14 @@ if ($session) {
                 <li><a href="http://heyjimmy.net">HeyJimmy Homepage</a></li>
                 <li><a href="http://twitter.com/HeyJimmyUK">Twitter</a></li>
                 <li><a href="mailto:james@heyjimmy.net">E-mail</a></li>
-              </ul>
+		</ul>
             </div>
           </div>
 
           <div class="inner cover">
-            
-<table class="table table-responsive"><tbody><tr>';
+<table class="table table-responsive">
+<tbody><tr>
+';
 $count = 0;
 	foreach (array_slice($topstories, 0, 40) as $word=>$instance) {
 		if ($count % 5 == 0) echo '</tr><tr>';
@@ -154,18 +157,19 @@ $count = 0;
 		echo '<td><a href="comments.php?comments='.$word.'" target="_blank"><h3>'.$word.'</h3></a></td>';
 	}
 
-	//Got the top 40 words. Now go through the stories and pull out the ones that have each word. Have the word be a link to
-	//a list of the stories.
-
-	/*$
-	 photorequest = (new FacebookRequest($session, 'GET', '/me/picture?type=large&redirect=false'))
-	  ->execute()->getGraphObject()->asArray();
-	echo '<img src="'.$photorequest->url.'">';
-	 */
 echo '</tr></tbody></table></p>
 
           <div class="mastfoot">
-            <div class="inner">
+	  <div class="inner">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- WhatsBuzzing -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-5237428979268056"
+     data-ad-slot="5184630970"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 		<p><img height="30px" src="images/WhatsBuzzingWhiteTextLogo.png"></img></p>
               <p>&copy 2014, Hey Jimmy Ltd.</p>
             </div>
