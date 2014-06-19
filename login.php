@@ -76,12 +76,15 @@ $loginUrl = $helper->getLoginUrl(array("scope"=>"read_stream"));
               <?php echo '<a href="'.$loginUrl.'" class="btn btn-social btn-facebook"><i class="fa fa-facebook"></i>Login with Facebook</a>'; ?>
 	    </p>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- WhatsBuzzing -->
+<!-- WhatsBuzzing Responsive -->
 <ins class="adsbygoogle"
-     style="display:inline-block;width:728px;height:90px"
+     style="display:block"
      data-ad-client="ca-pub-5237428979268056"
-     data-ad-slot="5184630970"></ins>
+     data-ad-slot="7375727775"
+     data-ad-format="auto"></ins>
 <script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
           </div>
