@@ -85,12 +85,11 @@ $loginUrl = $helper->getLoginUrl(array("scope"=>"read_stream"));
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-          </div>
 
-          <div class="mastfoot">
-            <div class="inner">
+</div>
+         <div class="mastfoot"> 
+	    
+	    <div class="inner">
               <p><img height="30px" src="images/WhatsBuzzingWhiteTextLogo.png"></img></p>
 		<p>&copy 2014, Hey Jimmy Ltd.</p>
             </div>

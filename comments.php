@@ -85,14 +85,16 @@ echo '<!DOCTYPE html>
 
 <p class="lead"></p>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- WhatsBuzzing -->
+<!-- WhatsBuzzing Responsive -->
 <ins class="adsbygoogle"
-     style="display:inline-block;width:728px;height:90px"
+     style="display:block"
      data-ad-client="ca-pub-5237428979268056"
-     data-ad-slot="5184630970"></ins>
+     data-ad-slot="7375727775"
+     data-ad-format="auto"></ins>
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
-</script>            
+</script>
+          
 <table class="table table-responsive"><tbody><tr>';
 
 
